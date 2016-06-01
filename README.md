@@ -1,4 +1,4 @@
-# xxmanager
+# cdzmanager
 通用后台权限管理项目  
 
 ##项目简介
