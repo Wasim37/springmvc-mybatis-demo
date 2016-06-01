@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<properties url="file:///E:/home/mbg.properties" />
+	<classPathEntry location="${mbg.jar.path}" />
+	<context id="context" defaultModelType="flat">
+
+		<plugin type="com.tyxj.common.MyBatisBuilderPlugin"></plugin>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/fndmanager" userId="root" password="123456" />
+		<javaModelGenerator targetPackage="com.tyxj.bean" targetProject="${target.project.base}/src/main/java">
+			<property name="mergeable" value="false"></property>
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="mybatis" targetProject="${target.project.base}/src/main/resources" />
+    	<javaClientGenerator targetPackage="com.tyxj.dao.mapper" targetProject="${target.project.base}/src/main/java" type="XMLMAPPER"/>
+    	
+		<table schema="fndmanager" tableName="function" domainObjectName="Function"></table>
+		<table schema="fndmanager" tableName="role" domainObjectName="Role"></table>
+		<table schema="fndmanager" tableName="role_func" domainObjectName="RoleFunc"></table>
+		<table schema="fndmanager" tableName="user" domainObjectName="User"></table>
+		<table schema="fndmanager" tableName="user_role" domainObjectName="UserRole"></table>
+	</context>
+</generatorConfiguration>

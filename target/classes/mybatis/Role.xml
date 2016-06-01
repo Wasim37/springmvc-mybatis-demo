@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tyxj.dao.mapper.RoleMapper">
+	<select id="getRolesByUserId" parameterType="int" resultMap="BaseResultMap">
+		SELECT r.* FROM role r inner join user_role ur on r.role_id = ur.role_id where ur.user_id = #{value}
+	</select>
+	<select id="getPageList" resultMap="BaseResultMap" parameterType="map">
+		SELECT * FROM role u where 1
+		<if test="role.roleName !=null ">
+			and u.role_name like CONCAT('%',#{role.roleName,jdbcType=VARCHAR},'%')
+		</if>
+		<if test=" limit != null ">
+			limit ${limit.start} , ${limit.size}
+		</if>
+	</select>
+	
+	<select id="getTotalCount" resultType="int" parameterType="map">
+		SELECT count(1) FROM role u where 1
+		<if test="role.roleName !=null ">
+			and u.role_name like CONCAT('%',#{role.roleName,jdbcType=VARCHAR},'%')
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+	    http://www.springframework.org/schema/mvc 
+	    http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd 
+	    http://www.springframework.org/schema/aop  
+	    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd  
+	    http://www.springframework.org/schema/context 
+	    http://www.springframework.org/schema/context/spring-context.xsd
+	    http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
+	    http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd
+	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd"
+	default-lazy-init="false">
+	
+	<context:property-placeholder location="classpath*:other.properties" />  
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/json;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<!-- <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/> -->
+			</list>
+		</property>
+	</bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	<mvc:default-servlet-handler />
+	<context:component-scan base-package="com.tyxj.controller" />
+	<bean id="jstlViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix" value="/html/" />
+		<property name="suffix" value=".html" />
+		<property name="contentType" value="text/html;charset=UTF-8"/>
+	</bean>
+
+	<!-- response body json -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="10240000000" />
+		<property name="maxInMemorySize" value="1024000000" />
+	</bean>
+	<bean class="com.tyxj.common.exception.CustomExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthenticatedException">login</prop>
+				<prop key="org.apache.shiro.authc.AuthenticationException">login</prop>
+				<prop key="com.tyxj.common.exception.UserNotLoginException">login</prop>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">error</prop>
+			</props>
+		</property>
+	</bean>
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+		depends-on="lifecycleBeanPostProcessor" />
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+</beans> 	   

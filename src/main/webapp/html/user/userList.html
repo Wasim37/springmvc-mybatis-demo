@@ -1,0 +1,125 @@
+
+<style>
+.dialog_input{ width:100% }
+</style>
+
+<!-- #nav-search -->
+
+<!-- /.page-header -->
+<div class="page-header">
+	<h1>
+		<small></small>
+		<div class="pull-left">
+			<button class="btn btn-xs btn-primary" onclick="addUser()">新增用户</button>
+		</div>
+		<div class="pull-right">
+			<form class="form-search" id="form_userSearch">
+				<span class="input-icon"> 
+					<input type="text" placeholder="根据用户名称查询" class="nav-search-input" id="userNameQuery" autocomplete="off" /> 
+					<i class="icon-search nav-search-icon"></i>
+				</span>
+			</form>
+		</div>
+	</h1>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="table-responsive">
+			<table id="tb_userList"
+				class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>用户名称</th>
+						<th class="hidden-480">账号状态</th>
+						<th><i class="icon-time bigger-110 hidden-480"></i>账号创建时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div class="footbox">
+			<div id="countbox" style="text-align:center; float:left"></div>
+			<div id="page3" style="text-align:center; float:right"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 添加用户的弹出框 -->
+<div class="hide">
+	<div id="dialog-form">
+		<form id="myform">
+			<br>
+			<div id="userNameAndPwd" style="display: none"><p>
+				<label for="userName">用户名：</label> 
+				<input type="text" id="userName" name="userName" value="" maxlength="20" class="text">
+				<span class="star">*</span>
+			</p><p>
+				<label for="passWord">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+				<input type="password" id="passWord" name="passWord" value="" maxlength="20" class="text">
+				<span class="star">*</span>
+			</p></div>
+			<br>
+			<table>
+				<tr>
+					<td><label>系统角色：</label></td>
+					<td></td>
+					<td><label>当前用户角色：</label></td>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						<select id="sl_roleList" multiple="multiple" style="width: 200px;height: 150px;display: none;" class="text"></select>
+						<select id="sl_leftRoleList" multiple="multiple" style="width: 230px;height: 188px;border: none;" class="text"></select></td>
+					<td style="width: 80px; text-align: center;">
+						<input type="button" id="btn_systemUserRoleToRight"  value=">" onclick="leftToRight();"></td>
+					<td rowspan="2">
+						<select id="sl_rightRoleList" name="sl_rightRoleList" multiple="multiple" style="width: 200px;height: 188px;border: none;" class="text"></select>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 80px; text-align: center;"><input
+						type="button" id="btn_systemUserRoleToLeft" style="width: 20px;"
+						value="<" onclick="rightToLeft();"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+		
+<!-- 列表显示 -->
+<script type="text/template" charset="utf-8" id="tp_userList">
+{{ if(it && it.length>0){ }}
+	{{ for(var i=0;i<it.length;i++){  }}
+	<tr>
+		<td>{{=i+1}}</td>
+		<td>{{=it[i].userName}}</td>
+		<td>
+			{{ if(it[i].userStatus==1){  }}
+					账号正常
+			{{ 	} else if(it[i].userStatus==0){ }}
+					暂停使用
+			{{	} }}
+		</td>
+		<td>{{=it[i].createTime}}</td>
+		<td>
+			<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+				<button class="btn btn-xs btn-primary" onclick="updateUser({{=it[i].userId}},'{{=it[i].userName}}','{{=it[i].passWord}}')">角色修改</button>&nbsp;&nbsp;
+				{{ if(it[i].userName != 'admin'){ }}
+					<button class="btn btn-xs btn-primary" onclick="resetPwd({{=it[i].userId}})">密码重置</button>&nbsp;&nbsp;
+					<a class="red" href="#" title="删除用户" onclick="delSingleUser({{=it[i].userId}})">
+						<i class="icon-trash bigger-130"></i>
+					</a>
+				{{ } }}
+			</div>
+		</td>
+	</tr>
+	{{ } }}
+{{ }else{ }}
+	<tr><td colspan='6'>没有查询到数据</td></tr>
+{{ } }}					
+</script>
+
+
+<script src="../statics/js/user/userList.js"></script>

@@ -1,0 +1,98 @@
+
+
+/* 椤甸潰鍏叡 */
+html,body{_overflow-y:auto; font-family:'\5FAE\8F6F\96C5\9ED1'; background-color:#fff; font-size:14px;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td,form{margin:0; padding:0;}
+a{text-decoration:none;}
+body{background-image:none;}
+a:hover{ text-decoration:none;}
+i{ font-family:Bookman Old Style;}
+.clear:after{clear:both; content:'.'; display:block; height:0; font-size:0; visibility:hidden;}
+.clear{zoom:1; clear:both;}
+.hide{display:none;}
+.area_zero{position:absolute; width:0; height:0; border-style:dashed; border-color:transparent; overflow:hidden;}
+pre{font-family:'\5FAE\8F6F\96C5\9ED1';}
+strong,em{font-weight:900;}
+.inline,
+.laynav a,
+.layupdate li{display:inline-block; *display:inline; *zoom:1; vertical-align:top; font-size:14px;}
+.btns{display:inline-block; *display:inline; *zoom:1; vertical-align:top; padding:0 15px; line-height:22px; font-size:12px; background-color:#14AADB; color:#fff; cursor:pointer; /*border-radius:20px; box-shadow: 1px 1px 1px #ccc;*/}
+.btns:hover{background-color:#118DB7; color:#fff;}
+.btnsvoid,.btnsvoid:hover{cursor:default; background-color:#ccc;}
+.ver{font-family: Verdana;}
+
+.clearfix{ /*clear:both;*/ zoom:1;}
+.clearfix:after{content:'\20'; clear:both; zoom:1; display:block; height:0;}
+
+.box{position:relative; width:1000px; margin:0 auto;}
+.laymain{padding:20px 0; margin-bottom:30px; background-color:#fff;}
+h2{height:35px; line-height:35px; margin:20px 0 0;}
+.layicon, .laylist dt i{background:url(images/down.png) no-repeat;}
+
+/* 澶撮儴 */
+.laybanner, .laynav{ background-color:#fff;}
+.laybanner .box{height:150px;}
+.laybanner h1{position:absolute; left:0; top:0; width:1000px; height:150px; background:url(images/banner.png?v=1) no-repeat; text-indent:-9999px;}
+.layintro{position:absolute; right:0; top:56px; width:214px; color:#DDEBF7; font-size:14px; text-align: center;}
+.laydown{position:absolute; text-indent: 0; text-align:center; right:0; top:0; width:200px; height:70px; margin-bottom:10px; background-position:0 0; }
+.laydown .downintro{position:absolute; width:200px; left:0; bottom:-10px; color:#333;}
+/*.layintro p span{position:absolute; right:0;}*/
+.layintro p a{color:#95C1E6;}
+.layintro p a:hover{color:#DDEBF7;}
+
+/* 瀵艰埅 */
+.laynav{height:50px; line-height:50px; background-color:#eee; font-size:0;}
+.laynav a{padding:0 40px; font-size:16px; color:#333;}
+.laynav a:hover{height:45px; border-bottom:5px solid #333; color:#666;}
+.laynav .thianav{cursor:default; height:45px; border-bottom:5px solid #00AA91;}
+.fixnav{position:fixed; bottom:0; width:100%; z-index:999;}
+
+
+.git{position:absolute; top:14px; right:0;  line-height:26px; padding-left:40px; padding-bottom:10px;}
+
+.git a{padding:0; color:#005B8C;   font-family: Courier New;}
+.git a:hover{text-decoration:underline;border:none;}
+
+.laytext{margin-bottom: 10px; text-indent: 2em; line-height: 23px;}
+
+
+.settable{width:100%; margin-bottom:10px; background-color: #F6F6F6;}
+.settable,.settable td,.settable th{border:1px solid #ccc;}
+.settable th,.settable td{text-align:center;}
+.settable td{font-size:12px;}
+
+
+/* 鏂囨。 */
+.demoflow .laypage_next{width:100%; padding:0; margin:0; height:40px; line-height:40px; background-color:#eee; color:#000;}
+
+.api h2{margin:10px 0 10px;}
+.api_kuang{padding: 10px; border: 1px dotted #785; background: #eee;}
+.api .settable{margin:10px 0; border:1px solid #aaa; line-height:22px;}
+.api .settable th, .api .settable td{padding:5px 10px; border: 1px solid #aaa;}
+.api .settable th{background-color:#D5D5D5}
+.api .settable tr:nth-of-type(odd){background-color:#eee}
+
+/* 杈呭姪 */
+.laygotop{width: 57px; height: 57px; overflow: hidden; position: fixed; _position:absolute; right:0; bottom:55px; display:none; background:url(http://sentsin.com/jquery/layer/images/layer_ico.png) 0 -141px no-repeat;}
+.laygotop:hover{ background-position:  -70px -141px;}
+.layhigh{border:1px solid #ccc; padding:10px 20px 15px; background-color:#eee;}
+.layhigh h2{margin-top:0;}
+.laylists{line-height:22px;}
+.laylists li{margin-left:20px; list-style-type:decimal;}
+.layinputs{height:22px; line-height:22px; width:150px; margin:0;}
+body .demoicon{border: none; width:10px; cursor:pointer;}
+.demobtn{height:24px;}
+
+
+/* 搴曢儴 */
+.layer-footer{margin-top:50px; padding:30px 0; line-height:24px; border-top:1px solid #ccc; color:#333}
+.layer-link{display:block; height:40px; line-height:40px;}
+.layer-footer p{text-align:center;}
+.layer-footer p span{padding:0 5px;}
+.layer-footer a{color:#0099CC;}
+
+
+
+
+
+

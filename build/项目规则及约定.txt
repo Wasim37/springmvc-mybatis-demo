@@ -1,0 +1,37 @@
+﻿
+1、svn提交必须写注释，方便代码代码审查和日后查看
+2、提交svn大约5分钟后, 关注sonar代码检测变化, 阻断违规和严重违规必须立马清零
+3、个人的代码注释在项目中需统一风格, 在preferences的code template 配置
+4、项目前后台代码文件按功能模块新建文件夹存放,不要混合在同一个目录下
+       比如： 设备管理 /controller/device/*.java
+                    用户管理 /controller/user/*.java
+                    
+5.页面元素命名以  元素类型简写_相关功能属性  命名
+       例如某个div用于显示用户数据 则命名为div_userData
+       例如某个select用于显示用户数据 则命名为sl_userData
+       例如某个label用于显示用户数据 则命名为lb_userData
+       例如某个text用于显示用户数据 则命名为tx_userData
+       例如某个textarea用于显示用户数据 则命名为ta_userData
+       例如某个button用于显示展示用户数据 则命名为btn_showUserData
+       table简写为tb
+       dialog简写为dg
+       
+6. 统一ajax调用,在statics/js/common.js中,调用sendAjax(),默认为发送post,接收json格式;
+		使用示例
+		sendAjax({
+	    	url:"login",
+	        data:{"userName":$("#username").val(), "passWord":$("#password").val()},
+	        success:function(data){
+	            window.location.href="html/index.html?user="+$("#username").val();              
+	        },
+	        fail:function(data){
+	        	alert(data.msg);
+	        },
+	        error:function (XMLHttpRequest, textStatus, errorThrown){
+	            alert("网络异常");
+	        }
+	  });
+	  
+7. service中命名方法开头,查询以get,新增以add,修改以upd,删除以del开头
+
+8. service中增删改返回值为int类型,结果成功与否自行判断

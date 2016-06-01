@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>后台管理系统</title>
+		<meta name="keywords" content="后台管理系统" />
+		<meta name="description" content="后台管理系统" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script type="text/javascript">
+			function getWebAppPath() {   
+			    var url = window.location.href;
+			    var htmlIndex=url.indexOf("html", 0);
+			    if(htmlIndex>0){
+			    	url=url.substring(0, htmlIndex);
+			    }
+			    return url;
+			}
+			var webAppPath=getWebAppPath();
+			document.write("<link href='"+webAppPath+"assets/css/bootstrap.min.css' rel='stylesheet' />");
+			document.write("<link href='"+webAppPath+"assets/css/font-awesome.min.css' rel='stylesheet' />");
+			document.write("<link href='"+webAppPath+"assets/css/cyrillic.css' rel='stylesheet' />");
+			document.write("<link href='"+webAppPath+"assets/css/ace.min.css' rel='stylesheet' />");
+			document.write("<link href='"+webAppPath+"assets/css/ace-rtl.min.css' rel='stylesheet' />");
+		</script>
+	</head>
+
+	<body class="login-layout" onkeydown="keyLogin();">
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="center">
+								<h1>
+									<i class="icon-leaf green"></i>
+									<span class="red"></span>
+									<span class="white">XX后台管理系统</span>
+								</h1>
+								<h4 class="blue">&copy;公司名称</h4>
+							</div>
+
+							<div class="space-6"></div>
+
+							<div class="position-relative">
+								<div id="login-box" class="login-box visible widget-box no-border">
+									<div class="widget-body">
+										<!-- <div class="toolbar clearfix">
+											<div>
+												<a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
+													<i class="icon-arrow-left"></i>
+													忘记密码？
+												</a>
+											</div>
+
+											<div>
+												<a href="#" onclick="show_box('signup-box'); return false;" class="user-signup-link">
+													注册
+													<i class="icon-arrow-right"></i>
+												</a>
+											</div>
+										</div> -->
+										<div class="widget-main">
+											<h4 class="header blue lighter bigger">
+												<i class="icon-coffee green"></i>
+												请输入用户名和密码
+											</h4>
+
+											<div class="space-6"></div>
+
+											<form id="login">
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" id="username" class="form-control" placeholder="用户名" />
+															<i class="icon-user"></i>
+														</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" id="password" class="form-control" placeholder="密码" />
+															<i class="icon-lock"></i>
+														</span>
+													</label>
+
+													<div class="space"></div>
+
+													<div class="clearfix">
+														<label class="inline">
+															<input type="checkbox" style="display:none"/>
+															<span class="lbl"> </span>
+														</label>
+
+														<button type="button" id="submit" onclick="login()" class="width-35 pull-right btn btn-sm btn-primary">
+															<i class="icon-key"></i>
+															登陆
+														</button>
+													</div>
+
+													<div class="space-4"></div>
+												</fieldset>
+											</form>
+											
+										</div><!-- /widget-main -->
+									</div><!-- /widget-body -->
+								</div><!-- /login-box -->
+								
+							</div><!-- /position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<script src="assets\js\jquery-2.0.3.min.js"></script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+		<script src="assets\js\jquery-1.10.2.min.js"></script>
+		<![endif]-->
+
+		<!--[if !IE]> -->
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='"+webAppPath+"assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+		<!-- <![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='"+webAppPath+"assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- inline scripts related to this page -->
+
+		<script type="text/javascript">
+			function show_box(id) {
+			 jQuery('.widget-box.visible').removeClass('visible');
+			 jQuery('#'+id).addClass('visible');
+			}
+			document.write("<script src='"+webAppPath+"statics/js/login.js'>"+"<"+"/script>");
+		</script>
+</body>
+</html>
+<script>var _hmt = _hmt || [];(function(){var hm=document.createElement("script");hm.src = "//hm.baidu.com/hm.js?a43c39da34531f4da694d4499c5614d4";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();</script>

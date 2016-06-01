@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>仪表图展示</title>
+</head>
+<body>
+	<div class="table-responsive">
+			<table id="tb_monitorList"
+				class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>设备序列号</th>
+						<th>设备名称</th>
+						<th>操作</th>
+					</tr>
+					<tr>
+						<td><div id="pm" class="progress" style="width: 450px;height: 450px;"></div></td>
+						<td><div id="temperature" class="progress" style="width: 450px;height: 450px;"></div></td>
+						<td><div id="humidness" class="progress" style="width: 450px;height: 450px;"></div></td>
+						<td><div id="humidness2" class="progress" style="width: 450px;height: 450px;"></div></td>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+    <div class="homePage">
+		<div class="conLeftContent">
+	      	
+	    </div>
+	</div>
+
+	<script type="text/javascript">
+	    
+		$(function() {
+			var pmChart = echarts.init(document.getElementById('pm'));
+			var tempChart = echarts.init(document.getElementById('temperature'));
+			var humChart = echarts.init(document.getElementById('humidness'));
+			var humChart2 = echarts.init(document.getElementById('humidness2'));
+			var option = {
+				tooltip : {
+					formatter : "{a} <br/>{b} : {c}%"
+				},
+				toolbox : {
+					feature : {
+						saveAsImage : {}
+					}
+				},
+				
+		series : [ {
+					name : '速度',
+					type : 'gauge',
+					z : 3,
+					min : 0,
+					max : 220,
+					splitNumber : 11,
+					radius : '50%',
+					axisLine : { // 坐标轴线
+						lineStyle : { // 属性lineStyle控制线条样式
+							width : 10
+						}
+					},
+
+					splitLine : { // 分隔线
+						length : 20, // 属性length控制线长
+						lineStyle : { // 属性lineStyle（详见lineStyle）控制线条样式
+							color : 'auto'
+						}
+					},
+					title : {
+						textStyle : { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight : 'bolder',
+							fontSize : 20,
+							fontStyle : 'italic'
+						}
+					},
+					detail : {
+						textStyle : { // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+							fontWeight : 'bolder'
+						}
+					},
+					data : [ {
+						value : 40,
+						name : 'km/h'
+					} ]
+				} ]
+			};
+
+			pmChart.setOption(option, true);
+			tempChart.setOption(option, true);
+			humChart.setOption(option, true);
+			humChart2.setOption(option, true);
+			setInterval(function() {
+				pmChart.setOption(option, true);
+				tempChart.setOption(option, true);
+				humChart.setOption(option, true);humChart2.setOption(option, true);
+			}, 2000);
+		});
+	</script>
+</body>
+</html>

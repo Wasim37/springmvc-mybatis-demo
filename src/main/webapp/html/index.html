@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>后台管理系统</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<script type="text/javascript">
+		function getWebAppPath() {   
+		    var url = window.location.href;
+		    var htmlIndex=url.indexOf("html", 0);
+		    if(htmlIndex>0){
+		    	//var sepIndex=url.lastIndexOf("/", 0);
+		    	url=url.substring(0, htmlIndex);
+		    }
+		    return url;
+		}
+		var webAppPath=getWebAppPath();
+		document.write("<script src='"+webAppPath+"/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		document.write("<link href='"+webAppPath+"/assets/css/bootstrap.min.css' rel='stylesheet' />");
+		document.write("<link href='"+webAppPath+"/assets/css/font-awesome.min.css' rel='stylesheet' />");
+		</script>
+		
+		<!--[if IE 7]>
+		  <script>document.write("<link rel='stylesheet' href='"+webAppPath+"/assets/css/font-awesome-ie7.min.css' />");</script>
+		<![endif]-->
+		
+		<script>
+		document.write("<link rel='stylesheet' href='"+webAppPath+"/assets/css/jquery-ui-1.10.3.full.min.css' />");
+		//document.write("<link rel='stylesheet' href='"+webAppPath+"/assets/css/chosen.css' />");
+		document.write("<link href='"+webAppPath+"/assets/css/cyrillic.css' rel='stylesheet' />");
+		document.write("<link href='"+webAppPath+"/assets/css/ace.min.css' rel='stylesheet' />");
+		document.write("<link href='"+webAppPath+"/assets/css/ace-rtl.min.css' rel='stylesheet' />");
+		document.write("<link href='"+webAppPath+"/assets/css/ace-skins.min.css' rel='stylesheet' />");
+		</script>
+		
+		<!--[if lte IE 8]>
+		  <script>
+			document.write("<link href='"+webAppPath+"/assets/css/ace-ie.min.css' rel='stylesheet' />");
+		</script>
+		<![endif]-->
+		
+		<script>
+		document.write("<script src='"+webAppPath+"/assets/js/ace-extra.min.js'>"+"<"+"/script>");
+		</script>
+		
+		<!--[if lt IE 9]>
+		<script>
+		document.write("<script src='"+webAppPath+"/assets/js/html5shiv.js'>"+"<"+"/script>");
+		document.write("<script src='"+webAppPath+"/assets/js/respond.min.js'>"+"<"+"/script>");
+		</script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="navbar navbar-default" id="navbar">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed');}catch(e){}
+			</script>
+
+			<div class="navbar-container" id="navbar-container">
+				<div class="navbar-header pull-left">
+					<a href="#" class="navbar-brand">
+						<small>
+							<i class="icon-leaf"></i>
+							后台管理系统
+						</small>
+					</a><!-- /.brand -->
+				</div><!-- /.navbar-header -->
+
+				<div class="navbar-header pull-right" role="navigation">
+					<ul class="nav ace-nav">
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo" />
+								<span class="user-info">
+									<small>欢迎,</small>
+									<small id="lb_loginUserName"></small>
+								</span>
+
+								<i class="icon-caret-down"></i>
+							</a>
+							
+							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+
+								<li>
+									<a onclick="changePwdView()" style="cursor: pointer">
+										<i class="icon-user"></i>
+										密码修改
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<a onclick="logout()" style="cursor: pointer">
+										<i class="icon-off"></i>
+										注销
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul><!-- /.ace-nav -->
+				</div><!-- /.navbar-header -->
+			</div><!-- /.container -->
+		</div>
+		
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed');}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="#">
+					<span class="menu-text"></span>
+				</a>
+
+				<div class="sidebar" id="sidebar">
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'fixed');}catch(e){}
+					</script>
+					<ul class="nav nav-list" id="funcs">
+						<!-- <li>
+							<a href="index.html">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> 首页 </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="#" class="dropdown-toggle" level="1"><i class="icon-text-width"></i><span class="menu-text"> 电桩管理 </span><b class="arrow icon-angle-down"></b></a>
+							<ul class="submenu">
+								<li>
+									<a href="#" onclick="showHTMLinDIV(this);" url="device/deviceList.html" level="2"><i class="icon-double-angle-right"></i> 设备列表 </a>
+								</li>
+
+								<li>
+									<a href="#"><i class="icon-double-angle-right"></i> 设备监控 </a>
+								</li>
+								
+								<li>
+									<a href="#"><i class="icon-double-angle-right"></i>设备监控</a>
+								</li>
+							</ul>
+						</li> -->
+					</ul><!-- /.nav-list -->
+
+					<div class="sidebar-collapse" id="sidebar-collapse">
+						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+					</div>
+
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'collapsed');}catch(e){}
+					</script>
+				</div>
+
+				<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<script type="text/javascript">
+							try{ace.settings.check('breadcrumbs' , 'fixed');}catch(e){}
+						</script>
+
+						<ul class="breadcrumb" id="ul_breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">Home</a>
+							</li>
+
+							<li>
+								<a href="#">Other Pages</a>
+							</li>
+							<li class="active">Blank Page</li>
+						</ul><!-- .breadcrumb -->
+
+						<!--<div class="nav-search" id="nav-search">
+							 <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form> 
+						</div>--><!-- #nav-search -->
+					</div>
+
+					<div class="page-content" id="div_pageContent">
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+			</div><!-- /.main-container-inner -->
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="icon-double-angle-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+		
+		<!-- 修改密码的弹出框 -->
+		<div class="hide">
+			<div id="dialog-changePwdForm">
+				<form id="changePwdForm">
+					<br>
+					<p>
+						<label for="roleName">&nbsp;原&nbsp;密&nbsp;码：&nbsp;</label> <input type="password" id="oldPwd" name="oldPwd" value="" maxlength="20" class="text">
+						<span class="star">*</span>
+					</p>
+					<p>
+						<label for="roleName">&nbsp;新&nbsp;密&nbsp;码：&nbsp;</label> <input type="password" id="newPwd" name="newPwd" value="" maxlength="20" class="text">
+						<span class="star">*</span>
+					</p>
+					<p>
+						<label for="roleName">密码确认：</label> <input type="password" id="surePwd" name="surePwd" value="" maxlength="20" class="text">
+						<span class="star">*</span>
+					</p>
+				</form>
+			</div>
+		</div>
+
+		<!--[if !IE]> -->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='"+webAppPath+"/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+		<script type="text/javascript">
+		 	window.jQuery || document.write("<script src='"+webAppPath+"/assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+		</script>
+		<![endif]-->
+
+
+		<!-- <script src="../assets/js/fuelux/fuelux.wizard.min.js"></script> -->
+		<script src="../assets/js/jquery.validate.min.js"></script>
+		<script src="../statics/js/messages_zh.js"></script>
+		<script src="../statics/js/additional-methods.js"></script>
+		
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='"+webAppPath+"/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			//document.write("<script src='"+webAppPath+"/assets/js/jquery.validate..min.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/assets/js/bootstrap.min.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/assets/js/typeahead-bs2.min.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/assets/js/ace-elements.min.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/assets/js/ace.min.js'>"+"<"+"/script>");
+			
+			document.write("<script src='"+webAppPath+"/js/doT.min.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/layer/layer.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/laydate/laydate.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/laypage/laypage.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/assets/js/jquery-ui-1.10.3.full.min.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/assets/js/jquery.ui.touch-punch.min.js'>"+"<"+"/script>");
+			
+			document.write("<script src='"+webAppPath+"/statics/js/common.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/statics/js/index.js'>"+"<"+"/script>");
+			document.write("<script src='"+webAppPath+"/statics/js/login.js'>"+"<"+"/script>");
+			//document.write("<script src='"+webAppPath+"/statics/js/additional-methods.js'>"+"<"+"/script>");
+			//document.write("<script src='"+webAppPath+"/assets/js/chosen.jquery.min.js'>"+"<"+"/script>");
+			//document.write("<script src='"+webAppPath+"/assets/js/jquery.dataTables.min.js'>"+"<"+"/script>");
+			//document.write("<script src='"+webAppPath+"/assets/js/jquery.dataTables.bootstrap.js'>"+"<"+"/script>");
+		</script>
+</body>
+</html>

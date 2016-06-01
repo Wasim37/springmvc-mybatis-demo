@@ -1,0 +1,219 @@
+/**
+
+
+
+ layui 1.0 Beta
+
+ By 贤心
+
+
+
+*/
+
+
+
+
+
+/* 初始化 */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td,form{margin:0; padding:0;}
+
+body{line-height:24px; font:14px '\5FAE\8F6F\96C5\9ED1',Tahoma,Arial,Helvetica,sans-serif; overflow-x:hidden; }
+
+body{-webkit-font-feature-settings: 'kern' 1; -moz-font-feature-settings: 'kern' 1; -o-font-feature-settings: 'kern' 1; text-rendering: geometricPrecision;}
+
+img{display:inline-block; border:none;}
+
+em,i{font-style:normal; font-weight:normal;}
+
+li{list-style:none;}
+
+table{border-collapse:collapse; border-spacing:0;}
+
+h1,h2,h3{font-size:14px; font-weight:400;}
+
+h4, h5, h6{font-size:100%; font-weight:400;}
+
+button,input,select,textarea{font-size:100%; }
+
+input,button,textarea,select,optgroup,option{font-family:inherit; font-size:inherit; font-style:inherit; font-weight:inherit; outline: 0;}
+
+button{border:none;}
+
+textarea{resize: none;}
+
+address,cite,dfn,em,var{font-style:normal;}
+
+pre{white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;}
+
+
+
+/* 滚动条 */
+
+::-webkit-scrollbar{width:10px;height:10px;}
+
+::-webkit-scrollbar-button:vertical{display:none;}
+
+::-webkit-scrollbar-track:vertical{background-color:black;}
+
+::-webkit-scrollbar-track-piece{background-color:#F5F5F5;}
+
+::-webkit-scrollbar-thumb:vertical{margin-right:10px; background-color:#A6A6A6;}
+
+::-webkit-scrollbar-thumb:vertical:hover{background-color:#aaa;}
+
+::-webkit-scrollbar-corner:vertical{background-color:#535353;}
+
+::-webkit-scrollbar-resizer:vertical{background-color:#FF6E00;}
+
+
+
+/* 图标字体 */
+
+/*
+
+@font-face {font-family: 'layui-icon';
+
+    src: url('iconfont.eot');
+
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+
+    url('iconfont.woff') format('woff'),
+
+    url('iconfont.ttf') format('truetype'),
+
+    url('iconfont.svg#iconfont') format('svg');
+
+}
+
+*/
+
+
+
+@font-face {
+
+  font-family: 'iconfont';
+
+  src: url('//at.alicdn.com/t/font_1452697275_3497212.eot'); /* IE9*/
+
+  src: url('//at.alicdn.com/t/font_1452697275_3497212.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+
+  url('//at.alicdn.com/t/font_1452697275_3497212.woff') format('woff'), /* chrome、firefox */
+
+  url('//at.alicdn.com/t/font_1452697275_3497212.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+
+  url('//at.alicdn.com/t/font_1452697275_3497212.svg#iconfont') format('svg'); /* iOS 4.1- */
+
+}
+
+
+
+.layui-icon{
+
+  font-family:"iconfont" !important;
+
+  font-size:16px;
+
+  font-style:normal;
+
+  -webkit-font-smoothing: antialiased;
+
+  -webkit-text-stroke-width: 0.2px;
+
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* 基础公用 */
+
+.layui-main{position:relative; width:1000px; margin:0 auto;}
+
+.layui-clear{ clear:both; zoom:1;}
+
+.layui-clear:after{content:'\20'; clear:both; zoom:1; display:block; height:0;}
+
+.layui-inline{display:inline-block; *display:inline; *zoom:1; vertical-align:top;}
+
+.layui-edge{position:absolute; width:0; height:0; border-style:dashed; border-color:transparent; overflow:hidden;}
+
+.layui-elip{text-overflow:ellipsis; overflow:hidden; white-space:nowrap;}
+
+body .layui-show{display:block;}body .layui-hide{display:none;}
+
+
+
+/* 表单模版 */
+
+
+
+
+
+/* 分页 */
+
+.layui-laypage{font-size:0; clear:both; color:#666;}
+
+.layui-laypage *{display:inline-block; vertical-align: top; font-size:12px;}
+
+.layui-laypage a{height:26px; line-height:26px; text-decoration:none; color:#666;}
+
+.layui-laypage a, .layui-laypage span{margin:0 3px 6px; padding:0 10px;}
+
+.layui-laypage span{height:26px; line-height:26px;}
+
+.layui-laypage input, .layui-laypage button{ border:1px solid #ccc; background-color:#fff;}
+
+.layui-laypage input{width:40px; height:26px; line-height:26px; margin:0 5px; padding:0 5px;}
+
+.layui-laypage button{height:28px; line-height:28px; margin-left:5px; padding:0 10px; color:#666;}
+
+
+
+.layui-laypage-default a{border:1px solid #ccc; background-color:#fff;}
+
+.layui-laypage-default span{height:28px; line-height:28px; color:#999; }
+
+.layui-laypage-default .layui-laypage-curr{font-weight:700; color:#666;}
+
+
+
+.layui-laypage-flow{text-align:center;}
+
+.layui-laypage-flow .layui-laypage-nomore{color:#999}
+
+
+
+/* Tab选项卡 */
+
+.layui-tab{position: relative; margin:10px 0; width: 100%;  overflow: hidden;}
+
+.layui-tab-title{position: relative; left: 0; font-size: 0; cursor: default; white-space: nowrap;  transition: all .3s; -webkit-transition: all .3s}
+
+.layui-tab-title li{display: inline-block; *display: block; *zoom: 1; vertical-align: top; font-size: 14px;}
+
+.layui-tab-title li{position: relative; height: 45px; line-height: 45px; min-width: 65px; padding: 0 15px; text-align: center;}
+
+.layui-tab-title li.layui-tab-this{color: #666;}
+
+.layui-tab-title li.layui-tab-this::after{position: absolute; left:0; top: 0; content: ''; width:100%; height: 44px; border: 1px solid #ddd; border-bottom-color: #fff;}
+
+.layui-tab-content{padding-top: 10px; border-top: 1px solid #ddd;}
+
+.layui-tab-item{display: none;}
+
+.layui-tab-scroll{padding:0 21px;}
+
+.layui-tab-bar span{position: absolute; left: 0; top: 0; width: 20px; height:44px; line-height: 44px; text-align: center; border: 1px solid #ddd; background-color: #fff; color: #666; cursor: pointer;}
+
+.layui-tab-bar .layui-tab-right{left: auto; right: 0;}
+
+
+
+/* fixBlock */
+
+.layui-fixBlock{position: fixed; right: 15px; bottom: 15px; z-index: 9999; width: 50px;}
+
+.layui-fixBlock li{height: 50px; line-height: 50px; margin-bottom: 1px; text-align:center; cursor: pointer; font-size:26px; background-color: #009E94; color:#fff;}
+
+.layui-fixBlock li:hover{opacity: 0.8;}
+
+.layui-fixBlock li.icon-top{display:none; font-size:40px;}

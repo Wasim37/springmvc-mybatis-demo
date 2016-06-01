@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>折现统计图展示</title>
+</head>
+<body>
+    <div class="homePage">
+		<div class="conLeftContent">
+	      	<div id="progress" class="progress" style="width: 700px;height: 400px;"></div>
+	    </div>
+	</div>
+
+	<script type="text/javascript">
+	    var lineChartDataX = [];// 在线率在线图的x轴数据
+	    // var lineChartDataXX;
+	    var lineChartDataY = [];// 在线率在线图的Y轴数据
+	    var line_noFaults="";
+		$.ajax({
+			url : webAppPath + "deviceStatus/chartView",
+			data : {
+				"deviceSerial" : deviceSerialGlobal
+			},
+			type : "POST",
+			async : false,
+			dataType : "json",
+			success : function(data) {
+				if (data.status == 200) {
+					// 获取在线率的数据
+					var list = data.result;
+					if (list.length>0) {
+						for (var i = 0; i < list.length; i++) {
+	                    	var obj = list[i];
+	                    	lineChartDataX.push(obj.createTime.substring(12,21));
+	                    	if("纸杯数" == type){
+	                    		lineChartDataY.push(obj.cups);
+	                    	} else if("水机状态" == type){
+	                    		lineChartDataY.push(obj.waterDeviceStatus);
+	                    	} else if("咖啡机状态" == type){
+	                    		lineChartDataY.push(obj.coffeeDeviceStatus);
+	                    	} else if("pm值" == type){
+	                    		lineChartDataY.push(obj.pm);
+	                    	} else if("原水tds" == type){
+	                    		lineChartDataY.push(obj.rawWaterTds);
+	                    	} else if("净水tds" == type){
+	                    		lineChartDataY.push(obj.treatedWaterTds);
+	                    	} else if("环境温度" == type){
+	                    		lineChartDataY.push(obj.envirTemp);
+	                    	} else if("环境湿度" == type){
+	                    		lineChartDataY.push(obj.envirHumidity);
+	                    	} else if("voc" == type){
+	                    		lineChartDataY.push(obj.voc);
+	                    	} else if("T2温度" == type){
+	                    		lineChartDataY.push(obj.tempT2);
+	                    	} else if("T2B温度" == type){
+	                    		lineChartDataY.push(obj.tempT2b);
+	                    	} else if("T3温度" == type){
+	                    		lineChartDataY.push(obj.tempT3);
+	                    	} else if("排气温度" == type){
+	                    		lineChartDataY.push(obj.tempPq);
+	                    	} else if("热水温度" == type){
+	                    		lineChartDataY.push(obj.tempHot);
+	                    	} else if("冻水温度" == type){
+	                    		lineChartDataY.push(obj.tempIce);
+	                    	} else if("水位1" == type){
+	                    		lineChartDataY.push(obj.waterLevel1);
+	                    	} else if("水位2" == type){
+	                    		lineChartDataY.push(obj.waterLevel2);
+	                    	} else if("水位3" == type){
+	                    		lineChartDataY.push(obj.waterLevel3);
+	                    	} else if("流量1" == type){
+	                    		lineChartDataY.push(obj.flow1);
+	                    	} else if("流量2" == type){
+	                    		lineChartDataY.push(obj.flow2);
+	                    	} else if("风量" == type){
+	                    		lineChartDataY.push(obj.windSize);
+	                    	} else {
+	                    		line_noFaults="没有在线率的相关数据";
+	    						lineChartDataX.push(0);
+	                        	lineChartDataY.push(0);
+	                    	}
+	                    }
+					}else{
+						line_noFaults="没有在线率的相关数据";
+						lineChartDataX.push(0);
+                    	lineChartDataY.push(0);
+					}
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(errorThrown);
+			}
+		});
+		// 首页折线图函数
+		function indexLineChart(id) {
+		  var myChart = echarts.init(document.getElementById(id));
+		   myChart.setOption({
+		      title: {
+		             text: type + '一天变化情况',
+		             subtext:line_noFaults,
+		             left:'center'
+		         },
+		         tooltip: {
+		             trigger: 'axis'
+		         },
+		         legend: {
+		             data:['数值'],
+		             right:'right'
+		         },
+		         grid: {
+		             left: '3%',
+		             right: '4%',
+		             bottom: '3%',
+		             containLabel: true
+		         },
+		         xAxis: {
+		             type: 'category',
+		             boundaryGap: false,
+		          	 data: lineChartDataX
+		             //data: ['周一','周二','周三','周四','周五','周六','周日']
+		         },
+		         yAxis: {
+		         	// max:100,
+		         	 min:0,
+		             type: 'value'
+		         },
+		         series: [{
+		             name:'数值',
+		             type:'line',
+		             data:lineChartDataY		                 
+		             //data:["12","82","12","12","12","92","92"]
+		         }]
+		   });
+		}
+        // 运行
+		$(function () {
+			//折线图
+			indexLineChart('progress');
+		});
+	</script>
+</body>
+</html>
