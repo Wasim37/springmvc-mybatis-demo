@@ -25,7 +25,7 @@ public class IndexAction{
 	private IFunctionService functionService;
 	
 	/**
-	 * 初始菜单
+	 * 初始hua菜单
 	 * @Title: indexInitMenu
 	 * @author WangX
 	 * @Date: 2016年5月20日 下午4:06:56
