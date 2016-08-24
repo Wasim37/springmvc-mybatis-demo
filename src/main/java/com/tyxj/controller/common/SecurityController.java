@@ -57,7 +57,7 @@ public class SecurityController{
 	 * 用户登录
 	 * @Title: doUserLogin
 	 * @author WangX
-	 * @Date: 2016年5月16日 下午21:26:22
+	 * @Date: 2016年5月16日 下午2:26:22
 	 * @Description: 
 	 * @param @param user
 	 * @param @param request
