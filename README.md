@@ -9,7 +9,7 @@
 5、后台页面框架使用了自适应的bootstrap ace模板，模板官方地址：[http://wrapbootstrap.com/preview/WB0B30DGR](http://wrapbootstrap.com/preview/WB0B30DGR)  
 6、项目已实现用户及权限模块，基本功能包括用户登录、用户注销、密码修改、密码重置、新增用户、新增角色、用户角色配置、角色功能配置等    
 7、如果想新增模块进行功能扩展，可模仿function表已有数据添加数据，并进行权限配置  
-8、对于新增的数据库表，可运行/src/main/java/com/tyxj/build目录下的MybatisBuilder.java文件，自动生成bean、mapper和xml  
+8、数据库表如果有所变更，可运行/src/main/java/com/tyxj/build/MybatisBuilder.java文件，自动生成对应的bean、mapper和xml文件。文件包含单表的所有增删该查，但是针对多表的联合操作还是需要自己填写。
 
 ##使用说明
 1、将项目clone到本地，导入Eclipse，运行build install命令下载相关jar包  
